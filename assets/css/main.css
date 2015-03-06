@@ -55,7 +55,7 @@ a,
 a:hover,
 a:active,
 a:visited {
-  outline: 0px;
+  outline: 0;
 }
 a, a:active a:focus {
   color: inherit;
@@ -127,6 +127,82 @@ body {
     padding-top: 150px;
   }
 }
+
+
+
+
+
+
+.page-load-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+}
+
+.page-load {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 300000;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+  color: #fd5b5b;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  -webkit-animation-direction: normal;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: pulse;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-direction: normal;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-name: pulse;
+  -moz-animation-timing-function: ease-in-out;
+}
+
+.page-load .icon-load:before {
+  background-image: url('/images/load-icon.svg');;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+
+
 
 
 
@@ -645,6 +721,31 @@ footer .contact a:hover {
 
 
 /*------------------------------------1.works 페이지------------------------------------*/
+
+#loading {
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+	z-index:9999;
+}
+#loading img {
+	position:absolute; left:50%; top:50%;
+	margin:-30px 0 0 -30px;
+	animation:loadAni 1.2s ease-in-out infinite; -webkit-animation:loadAni 1.2s ease-in-out infinite;
+}
+
+@keyframes loadAni{
+	0% {transform:scale(0.9);}
+	50% {transform:scale(1.0);}
+	100% {transform:scale(0.9);}
+}
+@-webkit-keyframes loadAni{
+	0% {transform:scale(0.9);}
+	50% {transform:scale(1.0);}
+	100% {transform:scale(0.9);}
+}
+
 .project {
   display:-webkit-box; /* 사파리 및 크롬 호환 */
   display:-moz-box; /* 오페라 호환 */
@@ -656,57 +757,82 @@ footer .contact a:hover {
   padding: 1%;
 }
 
+.project .item .thumnail {
+  padding:2%;
+}
 .project .item .in {
-  padding:1%;
+  overflow:hidden;
 }
 .project .item img {
   width:100%;
-  padding: 1%;
+  /*padding: 1%;*/
 }
 
 @media only screen and (max-width: 3600px) {
   .project .item {
     width: 33.3%;
     /*margin: 0 auto;*/
-  }
+    overflow: hidden;
 
+  }
   .project .item:last-child {
     width: 33.4%;
     margin: 0 auto;
   }
 }
+
 @media only screen and (max-width: 1024px) {
   .project .item {
     width: 50%;
     margin: 0 auto;
+    overflow: hidden;
   }
-
   .project .item:last-child {
     width: 50%;
     margin: 0;
     float: left;
   }
 }
+
 @media only screen and (max-width: 640px) {
   .project .item {
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
   }
-
   .project .item:last-child {
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
   }
 }
+
 .mywork {
   max-width: 1280px;
   margin: 0 auto;
 }
 
+
 /*마우스 오버*/
-div.item:hover {
-  opacity: 0.5;
-  color : #3c3c3c;
+@media only screen and (max-width: 3600px) {
+  div.item:hover img {
+    transform: scale(1.2);
+    transition: 12s transform;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  div.item:hover img {
+    transform:scale(1.2);
+    transition: 12s transform;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  div.item:hover img {
+    transform:scale(1.2);
+    transition: 12s transform;
+  }
 }
 
 
@@ -753,7 +879,7 @@ div.item:hover {
 }
 @media only screen and (max-width: 889px) {
   .profile {
-;
+  ;
     margin: 0;
   }
 }
